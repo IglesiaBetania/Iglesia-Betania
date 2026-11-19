@@ -1,0 +1,322 @@
+<section id="ministerios-section" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ENCABEZADO -->
+    <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="bg-indigo-50 text-indigo-600 border border-indigo-100 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">
+            Servicio y Participación · Iglesia Betania
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+            Postúlate a Nuestros Ministerios
+        </h2>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+            En la <strong>Asociación Civil Iglesia Evangélica Libre Betania</strong> creemos que cada persona tiene dones para servir y edificar al cuerpo de Cristo. Conoce nuestras áreas ministeriales y envía tu postulación.
+        </p>
+    </div>
+
+    <!-- TARJETAS DE MINISTERIOS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <!-- 1. Administración -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Administración</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Organización institucional, registros, control de recursos, logística operativa y soporte administrativo para el buen funcionamiento de la iglesia.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Administración')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 2. Hospitalidad -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-door-open"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Hospitalidad</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Bienvenida cálida, atención a visitantes y congregantes, orden en las salas y servicio amable durante cada reunión y actividad especial.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Hospitalidad')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 3. Conexión -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Conexión</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Integración de nuevos asistentes, seguimiento cercano y puente para que cada persona encuentre su espacio de comunidad y crecimiento.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Conexión')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 4. Alabanza, danza y sonido -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Alabanza, Danza y Sonido</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Dirección musical, voces, instrumentos, expresión corporal y operación de audio para guiar la adoración congregacional.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Alabanza, danza y sonido')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 5. Plataformas digitales -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-photo-film"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Plataformas Digitales</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Gestión de redes sociales, diseño visual, fotografía, video, transmisiones y comunicación digital de nuestros eventos y programas.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Plataformas digitales')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 6. Betania kids -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-children"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Betania Kids</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Enseñanza bíblica, dinámicas creativas y cuidado seguro para los niños durante los servicios dominicales y actividades especiales.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Betania kids')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 7. Jovenes betania -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Jóvenes Betania</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Formación, discipulado y actividades para adolescentes y jóvenes, incluyendo el culto juvenil quincenal y <strong>@jovenesbetania_</strong>.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Jovenes betania')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 8. RCP (Red de cuidado pastoral) -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">RCP (Red de Cuidado Pastoral)</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Acompañamiento cercano, oración, visitas y contención pastoral a miembros y familias en momentos clave o de necesidad.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('RCP (Red de cuidado pastoral)')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 9. Espigas y gavillas -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Espigas y Gavillas</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Servicio solidario, asistencia comunitaria y apoyo directo a las personas y hogares que más lo requieren en nuestra población.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Espigas y gavillas')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 10. Experiencia -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-violet-50 text-violet-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Experiencia</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Ambientación, montaje, detalles y coordinación de encuentros para crear un entorno acogedor y memorable en cada reunión y evento.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Experiencia')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+
+        <!-- 11. Mantenimiento -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+                <div class="w-11 h-11 rounded-2xl bg-amber-100/70 text-amber-700 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Mantenimiento</h3>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                    Cuidado, limpieza, reparaciones menores y conservación de las instalaciones y áreas físicas de la sede para mantenerlas en óptimas condiciones.
+                </p>
+            </div>
+            <button type="button" onclick="seleccionarMinisterio('Mantenimiento')"
+                    class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
+                Postularme a este ministerio
+            </button>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE POSTULACIÓN -->
+    <div id="formulario-postulacion" class="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-10 shadow-sm max-w-3xl mx-auto">
+        <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Formulario de Postulación Ministerial</h3>
+        <p class="text-slate-600 text-sm mb-6">
+            Completa tus datos y envía tu postulación directamente por WhatsApp o correo a nuestro equipo de coordinación.
+        </p>
+
+        <form id="form-ministerio" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="postulante-nombre" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Nombre y Apellido</label>
+                    <input id="postulante-nombre" name="nombre" type="text" required placeholder="Ej. María Pérez"
+                           class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-600">
+                </div>
+                <div>
+                    <label for="postulante-telefono" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Teléfono / WhatsApp</label>
+                    <input id="postulante-telefono" name="telefono" type="tel" required placeholder="Ej. 04120000000"
+                           class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-600">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="postulante-correo" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Correo Electrónico</label>
+                    <input id="postulante-correo" name="correo" type="email" placeholder="tunombre@correo.com"
+                           class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-600">
+                </div>
+                <div>
+                    <label for="postulante-ministerio" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Ministerio de Interés</label>
+                    <select id="postulante-ministerio" name="ministerio" class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-600">
+                        <option value="Administración">Administración</option>
+                        <option value="Hospitalidad">Hospitalidad</option>
+                        <option value="Conexión">Conexión</option>
+                        <option value="Alabanza, danza y sonido">Alabanza, danza y sonido</option>
+                        <option value="Plataformas digitales">Plataformas digitales</option>
+                        <option value="Betania kids">Betania kids</option>
+                        <option value="Jovenes betania">Jovenes betania</option>
+                        <option value="RCP (Red de cuidado pastoral)">RCP (Red de cuidado pastoral)</option>
+                        <option value="Espigas y gavillas">Espigas y gavillas</option>
+                        <option value="Experiencia">Experiencia</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label for="postulante-mensaje" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Disponibilidad y Experiencia Previa</label>
+                <textarea id="postulante-mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué días puedes asistir, en qué área te gustaría apoyar o si tienes experiencia previa..."
+                          class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-600"></textarea>
+            </div>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+                <button type="submit" data-canal="whatsapp"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-sm inline-flex items-center gap-2 transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Enviar por WhatsApp
+                </button>
+                <button type="submit" data-canal="correo"
+                        class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-sm inline-flex items-center gap-2 transition">
+                    <i class="fa-solid fa-envelope"></i> Enviar por Correo
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    (function() {
+        window.seleccionarMinisterio = function(nombreMinisterio) {
+            const select = document.getElementById('postulante-ministerio');
+            const formCard = document.getElementById('formulario-postulacion');
+            if (select) {
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value === nombreMinisterio) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (formCard) {
+                formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        };
+
+        const form = document.getElementById('form-ministerio');
+        if (form) {
+            let canalElegido = 'whatsapp';
+            form.querySelectorAll('button[type="submit"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    canalElegido = btn.getAttribute('data-canal') || 'whatsapp';
+                });
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nombre = document.getElementById('postulante-nombre').value.trim();
+                const telefono = document.getElementById('postulante-telefono').value.trim();
+                const correo = document.getElementById('postulante-correo').value.trim();
+                const ministerio = document.getElementById('postulante-ministerio').value;
+                const mensaje = document.getElementById('postulante-mensaje').value.trim();
+
+                const texto = `Hola, deseo postularme al ministerio: ${ministerio}.\n` +
+                              `Nombre: ${nombre}\n` +
+                              `Teléfono: ${telefono}\n` +
+                              (correo ? `Correo: ${correo}\n` : '') +
+                              (mensaje ? `Detalles: ${mensaje}` : '');
+
+                if (canalElegido === 'correo') {
+                    const asunto = encodeURIComponent(`Postulación Ministerial: ${ministerio} - ${nombre}`);
+                    const cuerpo = encodeURIComponent(texto);
+                    window.location.href = `mailto:iglesiabetania.experiencia@gmail.com?subject=${asunto}&body=${cuerpo}`;
+                } else {
+                    const urlWa = `https://wa.me/584128499949?text=${encodeURIComponent(texto)}`;
+                    window.open(urlWa, '_blank', 'noopener,noreferrer');
+                }
+            });
+        }
+    })();
+</script>

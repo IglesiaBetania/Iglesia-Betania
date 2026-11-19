@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Betania</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // Azul Profundo / Indigo-600
+                        emeraldState: '#059669',
+                        amberState: '#D97706',
+                        redState: '#DC2626'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome v6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- CONFIGURACIÓN DE URL BACKEND APPS SCRIPT -->
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbyeMWMF0iNmIr3MkspldHnBq2WUDYlBBrDtNdLm43m4tEsiRx73OOSSBxdAgTFhRZtMAw/exec";
+    </script>
+
+    <!-- NAVEGACIÓN SUPERIOR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="cargarSeccion('inicio')">
+                <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/30 overflow-hidden shrink-0">
+                    <img src="img/logo_betania.png" alt="Logo Iglesia Betania" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 block leading-tight">Iglesia Betania</span>
+                    <span class="text-xs font-medium text-primary tracking-wider uppercase">Haciendo historia</span>
+                </div>
+            </div>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-sm text-slate-600">
+                <button type="button" data-nav="inicio" onclick="cargarSeccion('inicio')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Inicio</button>
+                <button type="button" data-nav="experiencia" onclick="cargarSeccion('experiencia')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Actividades</button>
+                <button type="button" data-nav="ministerios" onclick="cargarSeccion('ministerios')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Ministerios</button>
+                <button type="button" data-nav="quienes_somos" onclick="cargarSeccion('quienes_somos')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Quiénes Somos</button>
+                <button type="button" data-nav="preguntas" onclick="cargarSeccion('preguntas')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Preguntas</button>
+                <button type="button" data-nav="contacto" onclick="cargarSeccion('contacto')" class="ml-2 bg-primary text-white px-4 py-2 rounded-xl font-semibold shadow-md shadow-primary/20 hover:bg-indigo-700 transition">
+                    Contacto
+                </button>
+            </nav>
+
+            <!-- Botón Menú Móvil -->
+            <div class="md:hidden flex items-center">
+                <button type="button" onclick="toggleMenuMobile()" class="p-2.5 text-slate-700 rounded-xl hover:bg-slate-100" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-4 space-y-2">
+            <button type="button" onclick="cargarSeccion('inicio'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Inicio</button>
+            <button type="button" onclick="cargarSeccion('experiencia'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Actividades</button>
+            <button type="button" onclick="cargarSeccion('ministerios'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Ministerios</button>
+            <button type="button" onclick="cargarSeccion('quienes_somos'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Quiénes Somos</button>
+            <button type="button" onclick="cargarSeccion('preguntas'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Preguntas</button>
+            <button type="button" onclick="cargarSeccion('contacto'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium text-primary">Contacto</button>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR DINÁMICO SPA -->
+    <main id="app-container" class="flex-grow">
+        <!-- Aquí se cargan dinámicamente los archivos HTML parciales -->
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="space-y-1.5 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white overflow-hidden shrink-0">
+                        <img src="img/logo_betania.png" alt="Logo Iglesia Betania" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-white font-bold text-base block leading-tight">ASOCIACION CIVIL IGLESIA EVANGELICA LIBRE BETANIA</span>
+                        <span class="text-xs text-slate-400">RIF: J310518394 · Organización religiosa y comunitaria sin fines de lucro</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400">
+                    Domicilio Fiscal: Calle Rivas Dávila, Casa Nro. 20, Sector Centro, Palo Negro, Aragua. Zona Postal 2117.
+                </p>
+                <p class="text-xs text-slate-400">
+                    Correo: <a href="mailto:iglesiabetania.experiencia@gmail.com" class="text-slate-300 hover:text-white underline">iglesiabetania.experiencia@gmail.com</a> · Teléfono: +58 412 849 9949
+                </p>
+                <div class="flex items-center justify-center md:justify-start gap-4 pt-1 text-xs">
+                    <a href="https://instagram.com/betanialibre" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white inline-flex items-center gap-1.5">
+                        <i class="fa-brands fa-instagram"></i> @betanialibre
+                    </a>
+                    <a href="https://instagram.com/jovenesbetania_" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white inline-flex items-center gap-1.5">
+                        <i class="fa-brands fa-instagram"></i> @jovenesbetania_
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-auto flex flex-col items-center md:items-end gap-2">
+                <p class="text-sm">© 2026 Iglesia Betania. Todos los derechos reservados.</p>
+                <button type="button" onclick="abrirModalAdmin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                    Admin Check-in
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: BIENVENIDA -->
+    <div id="modal-onboarding" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-lg w-full rounded-3xl p-8 shadow-2xl text-center">
+            <div class="w-16 h-16 bg-indigo-50 text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6">
+                <i class="fa-solid fa-hands-holding-child"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Bienvenido a Iglesia Betania!</h3>
+            <p class="text-slate-600 text-sm mb-6">Un espacio de fe, familia y servicio comunitario. Conoce nuestros horarios de reunión, ministerios y próximas actividades.</p>
+            <button type="button" onclick="cerrarOnboarding()" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition">Explorar Sitio</button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: PRE-REGISTRO A ACTIVIDADES -->
+    <div id="modal-inscripcion" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl relative">
+            <button type="button" onclick="cerrarModalInscripcion()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <span class="bg-indigo-50 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2">
+                Pre-registro e Información
+            </span>
+            <h3 id="modal-ins-titulo" class="text-2xl font-bold text-slate-900 mb-4">Pre-registro</h3>
+            <form id="form-inscripcion" onsubmit="enviarInscripcion(event)" class="space-y-4">
+                <div>
+                    <label for="ins-evento-id" class="block text-xs font-bold uppercase text-slate-600 mb-1">Evento Seleccionado</label>
+                    <input type="text" id="ins-evento-id" readonly
+                           class="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none">
+                </div>
+                <div>
+                    <label for="ins-nombre" class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre y Apellido</label>
+                    <input type="text" id="ins-nombre" required placeholder="Ej: Juan Pérez"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="ins-cedula" class="block text-xs font-bold uppercase text-slate-600 mb-1">Cédula de Identidad</label>
+                        <input type="text" id="ins-cedula" required placeholder="Ej: 24567890"
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="ins-telefono" class="block text-xs font-bold uppercase text-slate-600 mb-1">Teléfono</label>
+                        <input type="tel" id="ins-telefono" required placeholder="Ej: 04128499949"
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label for="ins-correo" class="block text-xs font-bold uppercase text-slate-600 mb-1">Correo Electrónico <span class="text-slate-400 font-normal lowercase">(opcional)</span></label>
+                    <input type="email" id="ins-correo" placeholder="Ej: correo@ejemplo.com"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+                </div>
+                <button type="submit" id="btn-enviar-inscripcion" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition">
+                    Enviar Pre-registro
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: ADMIN CHECK-IN -->
+    <div id="modal-admin" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl relative">
+            <button type="button" onclick="cerrarModalAdmin()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar modal"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Control de Asistencia</h3>
+            <form onsubmit="ejecutarAdminCheckin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Clave de Administrador</label>
+                    <input type="password" id="admin-clave" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Cédula del Asistente</label>
+                    <input type="text" id="admin-cedula" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre de la Actividad</label>
+                    <input type="text" id="admin-eventoid" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm" placeholder="Ej: Encuentro Familiar 2026">
+                </div>
+                <button type="submit" id="btn-enviar-checkin" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition">Registrar Asistencia</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: NOTIFICACIÓN / ALERTA INSTITUCIONAL -->
+    <div id="modal-alerta" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl text-center relative">
+            <button type="button" onclick="cerrarModalAlerta()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar notificación">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="alerta-icono-wrap" class="w-16 h-16 bg-emerald-50 text-emeraldState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5">
+                <i id="alerta-icono" class="fa-solid fa-circle-check"></i>
+            </div>
+            <span id="alerta-etiqueta" class="bg-emerald-50 text-emeraldState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2">
+                Registro Exitoso
+            </span>
+            <h3 id="alerta-titulo" class="text-2xl font-bold text-slate-900 mb-2">¡Operación Completada!</h3>
+            <p id="alerta-mensaje" class="text-slate-600 text-sm mb-4"></p>
+            <div id="alerta-codigo-wrap" class="hidden bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 mb-6 text-xs text-slate-600">
+                Código de registro: <span id="alerta-codigo" class="font-bold text-slate-900 tracking-wider"></span>
+            </div>
+            <button type="button" id="alerta-btn" onclick="cerrarModalAlerta()" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition">
+                Aceptar
+            </button>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE GESTIÓN SPA Y ROUTER -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarSeccion('inicio');
+            if (!localStorage.getItem('betania_onboarding_seen')) {
+                document.getElementById('modal-onboarding').classList.remove('hidden');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                cerrarModalInscripcion();
+                cerrarModalAdmin();
+                cerrarModalAlerta();
+                cerrarOnboarding();
+            }
+        });
+
+        function marcarNavActiva(nombreArchivo) {
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                if (btn.getAttribute('data-nav') === nombreArchivo) {
+                    btn.classList.add('text-primary', 'bg-indigo-50', 'font-semibold');
+                } else {
+                    btn.classList.remove('text-primary', 'bg-indigo-50', 'font-semibold');
+                }
+            });
+        }
+
+        async function cargarSeccion(nombreArchivo) {
+            const container = document.getElementById('app-container');
+            marcarNavActiva(nombreArchivo);
+            try {
+                const response = await fetch(`${nombreArchivo}.html`);
+                if (!response.ok) throw new Error(`No se encontró ${nombreArchivo}.html`);
+                const htmlText = await response.text();
+
+                container.innerHTML = htmlText;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+            } catch (error) {
+                console.error("Error al cargar la sección:", error);
+                container.innerHTML = `
+                    <div class="max-w-xl mx-auto my-16 p-8 bg-white rounded-3xl border border-slate-200 text-center shadow-sm">
+                        <p class="text-slate-800 font-bold mb-2">Sección no disponible (${nombreArchivo}.html)</p>
+                        <p class="text-sm text-slate-500 mb-4">Verifica que el archivo exista en la misma carpeta del proyecto o vuelve al inicio.</p>
+                        <button type="button" onclick="cargarSeccion('inicio')" class="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition">Ir a Inicio</button>
+                    </div>`;
+            }
+        }
+
+        function cerrarOnboarding() {
+            localStorage.setItem('betania_onboarding_seen', 'true');
+            document.getElementById('modal-onboarding').classList.add('hidden');
+        }
+
+        function toggleMenuMobile() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function abrirModalInscripcion(titulo) {
+            document.getElementById('modal-ins-titulo').innerText = `Pre-registro: ${titulo}`;
+            document.getElementById('ins-evento-id').value = titulo;
+            document.getElementById('modal-inscripcion').classList.remove('hidden');
+        }
+
+        function cerrarModalInscripcion() {
+            document.getElementById('modal-inscripcion').classList.add('hidden');
+        }
+
+        function abrirModalAdmin() {
+            document.getElementById('modal-admin').classList.remove('hidden');
+        }
+
+        function cerrarModalAdmin() {
+            document.getElementById('modal-admin').classList.add('hidden');
+        }
+
+        function mostrarAlerta(mensaje, esExito = true, codigo = "") {
+            const modal = document.getElementById('modal-alerta');
+            const iconoWrap = document.getElementById('alerta-icono-wrap');
+            const icono = document.getElementById('alerta-icono');
+            const etiqueta = document.getElementById('alerta-etiqueta');
+            const titulo = document.getElementById('alerta-titulo');
+            const texto = document.getElementById('alerta-mensaje');
+            const codigoWrap = document.getElementById('alerta-codigo-wrap');
+            const codigoEl = document.getElementById('alerta-codigo');
+            const btn = document.getElementById('alerta-btn');
+
+            if (esExito) {
+                iconoWrap.className = "w-16 h-16 bg-emerald-50 text-emeraldState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
+                icono.className = "fa-solid fa-circle-check";
+                etiqueta.className = "bg-emerald-50 text-emeraldState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
+                etiqueta.innerText = "Registro Exitoso";
+                titulo.innerText = "¡Operación Completada!";
+                btn.className = "w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition";
+            } else {
+                iconoWrap.className = "w-16 h-16 bg-red-50 text-redState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
+                icono.className = "fa-solid fa-circle-exclamation";
+                etiqueta.className = "bg-red-50 text-redState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
+                etiqueta.innerText = "Aviso";
+                titulo.innerText = "No se pudo completar";
+                btn.className = "w-full bg-slate-900 text-white py-3.5 rounded-xl font-bold hover:bg-slate-800 transition";
+            }
+
+            texto.innerText = mensaje;
+
+            if (codigo) {
+                codigoEl.innerText = codigo;
+                codigoWrap.classList.remove('hidden');
+            } else {
+                codigoWrap.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function cerrarModalAlerta() {
+            document.getElementById('modal-alerta').classList.add('hidden');
+        }
+
+        async function enviarInscripcion(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-enviar-inscripcion');
+            const textoOriginal = btn.innerText;
+            btn.disabled = true;
+            btn.innerText = "Enviando...";
+
+            const eventoValor = document.getElementById('ins-evento-id').value.trim();
+            const nombreValor = document.getElementById('ins-nombre').value.trim();
+            const cedulaValor = document.getElementById('ins-cedula').value.trim();
+            const telefonoValor = document.getElementById('ins-telefono').value.trim();
+            const correoValor = document.getElementById('ins-correo').value.trim();
+
+            const payload = {
+                action: "registrarInscripcion",
+                evento: eventoValor,
+                eventoId: eventoValor,
+                nombre_apellido: nombreValor,
+                nombre: nombreValor,
+                cedula: cedulaValor,
+                telefono: telefonoValor,
+                correo: correoValor
+            };
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+                const json = await res.json();
+                if (json.success) {
+                    cerrarModalInscripcion();
+                    document.getElementById('form-inscripcion').reset();
+                    mostrarAlerta(json.message, true, json.id_evento || "");
+                } else {
+                    mostrarAlerta(json.message || "No se pudo guardar el pre-registro.", false);
+                }
+            } catch (err) {
+                console.error("Error al enviar pre-registro:", err);
+                mostrarAlerta("Error de conexión al enviar el pre-registro.", false);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = textoOriginal;
+            }
+        }
+
+        async function ejecutarAdminCheckin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-enviar-checkin');
+            const textoOriginal = btn ? btn.innerText : "Registrar Asistencia";
+            if (btn) {
+                btn.disabled = true;
+                btn.innerText = "Registrando...";
+            }
+
+            const payload = {
+                action: "adminCheckin",
+                clave: document.getElementById('admin-clave').value,
+                cedula: document.getElementById('admin-cedula').value.trim(),
+                eventoId: document.getElementById('admin-eventoid').value.trim(),
+                evento: document.getElementById('admin-eventoid').value.trim()
+            };
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+                const json = await res.json();
+                if (json.success) {
+                    cerrarModalAdmin();
+                    e.target.reset();
+                    mostrarAlerta(json.message, true);
+                } else {
+                    mostrarAlerta(json.message || "No se pudo registrar la asistencia.", false);
+                }
+            } catch (err) {
+                console.error("Error en check-in:", err);
+                mostrarAlerta("Error en el registro de asistencia.", false);
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerText = textoOriginal;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

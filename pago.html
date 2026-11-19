@@ -1,0 +1,276 @@
+<section class="bg-indigo-900 text-white py-16 sm:py-20 relative overflow-hidden">
+    <!-- DECORACIÓN DE FONDO -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <!-- COLUMNA IZQUIERDA: TASA BCV Y CUENTAS -->
+            <div>
+                <span class="bg-indigo-600/50 text-indigo-200 border border-indigo-400/30 px-3.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wider inline-block mb-3 backdrop-blur-md">
+                    Gestión Financiera
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Portal de Pagos y Aportes</h2>
+                <p class="text-indigo-200 mb-8 leading-relaxed text-sm sm:text-base">
+                    Realiza tus transferencias o pago móvil utilizando la tasa oficial del día y registra tu comprobante para validación inmediata.
+                </p>
+
+                <!-- CARD DE TASA BCV -->
+                <div class="bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-md mb-8 flex items-center justify-between shadow-xl">
+                    <div>
+                        <span class="text-xs uppercase text-indigo-300 font-bold tracking-wider block mb-1">Tasa Oficial BCV del Día</span>
+                        <div class="flex items-baseline gap-2">
+                            <span id="tasa-bcv-display" class="text-3xl sm:text-4xl font-black text-white">--- VES</span>
+                            <span class="text-xs text-indigo-300 font-medium">/ USD</span>
+                        </div>
+                    </div>
+                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl text-white shadow-inner">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </div>
+
+                <!-- CUENTAS BANCARIAS DINÁMICAS -->
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-building-columns text-indigo-400"></i> Cuentas Autorizadas
+                </h3>
+                <div id="contenedor-cuentas" class="space-y-4">
+                    <!-- Cuentas por defecto (si falla o tarda la API) -->
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl hover:bg-white/10 transition">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-white text-sm"><i class="fa-solid fa-mobile-screen text-indigo-400 mr-2"></i> Pago Móvil — Banco Mercantil</h4>
+                            <span class="text-[10px] bg-indigo-500/30 text-indigo-200 px-2 py-0.5 rounded font-mono">0105</span>
+                        </div>
+                        <p class="text-xs text-indigo-200"><strong>Teléfono:</strong> 0414-1234567 | <strong>RIF:</strong> J-12345678-9</p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl hover:bg-white/10 transition">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-white text-sm"><i class="fa-solid fa-globe text-emerald-400 mr-2"></i> Zelle / Transferencia Internacional</h4>
+                            <span class="text-[10px] bg-emerald-500/30 text-emerald-200 px-2 py-0.5 rounded font-mono">USD</span>
+                        </div>
+                        <p class="text-xs text-indigo-200"><strong>Correo:</strong> pagos@iglesiabetania.org | <strong>Titular:</strong> Iglesia Betania</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: FORMULARIO Y CALCULADORA -->
+            <div class="bg-white text-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl relative">
+                <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice-dollar text-primary"></i> Registrar Comprobante
+                </h3>
+
+                <form id="form-pago" onsubmit="enviarPago(event)" class="space-y-4">
+                    <!-- Cédula -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Cédula de Identidad</label>
+                        <input type="text" id="pago-cedula" required placeholder="Ej: 24567890" 
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none transition">
+                    </div>
+
+                    <!-- Calculadora USD a VES -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Monto en USD ($)</label>
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-3 text-slate-400 font-bold text-sm">$</span>
+                                <input type="number" step="0.01" id="pago-monto-usd" oninput="calcularMontoVES()" required placeholder="0.00" 
+                                       class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none font-bold text-slate-800">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Total VES (Calculado)</label>
+                            <input type="text" id="pago-monto-ves" readonly placeholder="0.00 VES" 
+                                   class="w-full bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3 text-sm font-black text-indigo-600 cursor-not-allowed">
+                        </div>
+                    </div>
+
+                    <!-- Tipo y Fecha -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Modalidad de Pago</label>
+                            <select id="pago-tipo" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                                <option value="PagoMovil">Pago Móvil</option>
+                                <option value="Transferencia">Transferencia Nacional</option>
+                                <option value="Zelle">Zelle / USD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Fecha de Operación</label>
+                            <input type="date" id="pago-fecha" required 
+                                   class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Banco Origen y Referencia -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Banco Origen</label>
+                            <input type="text" id="pago-banco-origen" required placeholder="Ej: Banesco, Mercantil" 
+                                   class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nro. de Referencia</label>
+                            <input type="text" id="pago-referencia" required placeholder="Ej: 123456" 
+                                   class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none font-mono">
+                        </div>
+                    </div>
+
+                    <!-- Adjunto Comprobante -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Adjuntar Comprobante (Imagen)</label>
+                        <input type="file" id="pago-comprobante" accept="image/*" required 
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 cursor-pointer">
+                    </div>
+
+                    <!-- Botón Enviar -->
+                    <button type="submit" id="btn-submit-pago" 
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-bold shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2 mt-2">
+                        <i class="fa-solid fa-paper-plane"></i> Registrar Pago Oficial
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT DE PAGO INTEGRADO Y OPTIMIZADO -->
+<script>
+    (function() {
+        // 1. Obtener Tasa BCV del estado global o consultar directamente
+        const displayBCV = document.getElementById('tasa-bcv-display');
+        
+        function actualizarTasaEnPantalla() {
+            if (displayBCV && window.tasaBCVGlobal) {
+                displayBCV.innerText = `${window.tasaBCVGlobal.toFixed(2)} VES`;
+            }
+        }
+
+        // Ejecución inmediata y reintento breve por si la API aún responde
+        actualizarTasaEnPantalla();
+        setTimeout(actualizarTasaEnPantalla, 1000);
+
+        // 2. Establecer la fecha actual de forma predeterminada
+        const fechaInput = document.getElementById('pago-fecha');
+        if (fechaInput && !fechaInput.value) {
+            fechaInput.valueAsDate = new Date();
+        }
+
+        // 3. Calculadora instantánea de USD a VES
+        window.calcularMontoVES = function() {
+            const usdInput = document.getElementById('pago-monto-usd');
+            const vesInput = document.getElementById('pago-monto-ves');
+            if (!usdInput || !vesInput) return;
+
+            const usd = parseFloat(usdInput.value) || 0;
+            const tasa = window.tasaBCVGlobal || 36.50;
+            const ves = usd * tasa;
+
+            vesInput.value = `${ves.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} VES`;
+        };
+
+        // 4. Cargar Cuentas Bancarias Dinámicas si están disponibles
+        async function cargarCuentasDinamicas() {
+            if (typeof window.API_URL === 'undefined') return;
+            try {
+                const res = await fetch(`${window.API_URL}?action=obtenerDatosIniciales`);
+                const data = await res.json();
+                
+                if (data.success && data.cuentas && data.cuentas.length > 0) {
+                    const contenedor = document.getElementById('contenedor-cuentas');
+                    if (!contenedor) return;
+
+                    let htmlCuentas = "";
+                    data.cuentas.forEach(c => {
+                        htmlCuentas += `
+                            <div class="bg-white/5 border border-white/10 p-4 rounded-xl hover:bg-white/10 transition">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="font-bold text-white text-sm">
+                                        <i class="fa-solid ${c.Tipo === 'PagoMovil' ? 'fa-mobile-screen text-indigo-400' : 'fa-globe text-emerald-400'} mr-2"></i> ${c.Banco} — ${c.Tipo}
+                                    </h4>
+                                    <span class="text-[10px] bg-indigo-500/30 text-indigo-200 px-2 py-0.5 rounded font-mono">${c.Tipo}</span>
+                                </div>
+                                <p class="text-xs text-indigo-200">
+                                    <strong>Número/Teléfono:</strong> ${c.Numero} | <strong>Titular:</strong> ${c.Titular} (${c.Documento})
+                                </p>
+                            </div>
+                        `;
+                    });
+                    contenedor.innerHTML = htmlCuentas;
+                }
+            } catch (e) {
+                console.log("Usando cuentas bancarias estáticas predeterminadas.");
+            }
+        }
+
+        cargarCuentasDinamicas();
+
+        // 5. Envío del Formulario de Pago en Base64
+        window.enviarPago = async function(e) {
+            e.preventDefault();
+
+            const btnSubmit = document.getElementById('btn-submit-pago');
+            const fileInput = document.getElementById('pago-comprobante');
+            const file = fileInput ? fileInput.files[0] : null;
+
+            if (!file) {
+                alert("Por favor, selecciona un archivo de comprobante.");
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Procesando y Subiendo...`;
+
+            try {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const payload = {
+                        action: "registrarPago",
+                        cedula: document.getElementById('pago-cedula').value.trim(),
+                        tipoPago: document.getElementById('pago-tipo').value,
+                        fecha: document.getElementById('pago-fecha').value,
+                        bancoOrigen: document.getElementById('pago-banco-origen').value.trim(),
+                        referencia: document.getElementById('pago-referencia').value.trim(),
+                        bancoDestino: "Banco Mercantil",
+                        montoUSD: document.getElementById('pago-monto-usd').value,
+                        montoVES: document.getElementById('pago-monto-ves').value,
+                        comprobanteBase64: reader.result
+                    };
+
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        alert("✅ " + (result.message || "Pago registrado exitosamente. Será verificado en breve."));
+                        document.getElementById('form-pago').reset();
+                        document.getElementById('pago-monto-ves').value = "";
+                        document.getElementById('pago-fecha').valueAsDate = new Date();
+                    } else {
+                        alert("❌ Error: " + (result.message || "No se pudo registrar el pago."));
+                    }
+
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Registrar Pago Oficial`;
+                };
+
+                reader.onerror = function() {
+                    alert("Error al leer el archivo de comprobante.");
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Registrar Pago Oficial`;
+                };
+
+            } catch (error) {
+                console.error(error);
+                alert("Hubo un error de conexión al procesar el pago.");
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Registrar Pago Oficial`;
+            }
+        };
+    })();
+</script>

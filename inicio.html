@@ -1,0 +1,294 @@
+<!-- 1. HERO CON CARRUSEL -->
+<section class="relative bg-slate-900 text-white overflow-hidden min-h-[80vh] flex items-center justify-center">
+    <div class="absolute inset-0 z-0 opacity-40">
+        <div class="carrusel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" 
+             style="background-image: url('https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&q=80&w=1600')"></div>
+        <div class="carrusel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" 
+             style="background-image: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&q=80&w=1600')"></div>
+        <div class="carrusel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" 
+             style="background-image: url('https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&q=80&w=1600')"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <span class="bg-indigo-600/30 text-indigo-200 border border-indigo-400/30 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest inline-block mb-6 backdrop-blur-md">
+            Más de 100 Años haciendo historia
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
+            Bienvenidos a la <span class="text-indigo-400">Iglesia Betania</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <strong>Somos betania, Somos familia, Somos iglesia</strong>.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <button onclick="cargarSeccion('experiencia')" 
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5">
+                Programas y Actividades
+            </button>
+            <button onclick="cargarSeccion('quienes_somos')" 
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl backdrop-blur-sm transition">
+                Nuestra Historia
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTROLES CARRUSEL -->
+    <button onclick="cambiarSlideManual(-1)" aria-label="Anterior" class="absolute left-4 z-20 p-3 rounded-full bg-slate-900/40 hover:bg-slate-900/70 border border-white/10 text-white backdrop-blur-sm transition hidden sm:block">
+        <i class="fa-solid fa-chevron-left text-lg"></i>
+    </button>
+    <button onclick="cambiarSlideManual(1)" aria-label="Siguiente" class="absolute right-4 z-20 p-3 rounded-full bg-slate-900/40 hover:bg-slate-900/70 border border-white/10 text-white backdrop-blur-sm transition hidden sm:block">
+        <i class="fa-solid fa-chevron-right text-lg"></i>
+    </button>
+
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+        <button onclick="irASlide(0)" aria-label="Diapositiva 1" class="indicador-slide w-6 h-3 rounded-full bg-white transition-all duration-300"></button>
+        <button onclick="irASlide(1)" aria-label="Diapositiva 2" class="indicador-slide w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+        <button onclick="irASlide(2)" aria-label="Diapositiva 3" class="indicador-slide w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+    </div>
+</section>
+
+<!-- 2. METRICAS / STATS -->
+<section class="relative z-20 -mt-10 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600">+100</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Años de Historia</div>
+        </div>
+        <div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600">+1,200</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Miembros Activos</div>
+        </div>
+        <div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600">11</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Ministerios</div>
+        </div>
+        <div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600">+250</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Voluntarios</div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. LABOR SOCIAL: AMOR EN ACCIÓN -->
+<section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="bg-rose-50 text-rose-600 border border-rose-100 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">
+            Impacto Comunitario
+        </span>
+        <h2 class="text-3xl font-extrabold text-slate-900">Programa Social "Amor en Acción"</h2>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base">
+            Extendemos nuestra mano a las familias más vulnerables de nuestra población mediante jornadas gratuitas de asistencia integral, salud, juridica y formación.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Tarjeta 1: Asistencia Social -->
+        <div class="bg-white rounded-3xl p-7 shadow-sm hover:shadow-md border border-slate-100 transition">
+            <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Asistencia Alimentaria y Vestido</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+                Realizamos jornadas periódicas de entrega de alimentos, donación de ropa en buen estado y servicio gratuito de corte de cabello para niños, jóvenes y adultos de la comunidad.
+            </p>
+        </div>
+
+        <!-- Tarjeta 2: Consultas Médicas -->
+        <div class="bg-white rounded-3xl p-7 shadow-sm hover:shadow-md border border-slate-100 transition">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Jornadas Médicas Especializadas</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+                Brindamos atención primaria y consultas médicas gratuitas en diversas especialidades gracias al apoyo de profesionales de la salud comprometidos con el bienestar de la población.
+            </p>
+        </div>
+
+        <!-- Tarjeta 3: Niñez y Juventud -->
+        <div class="bg-white rounded-3xl p-7 shadow-sm hover:shadow-md border border-slate-100 transition">
+            <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-children"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Formación de Niños y Jóvenes</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+                Desarrollamos actividades recreativas, educativas y de valores cristianos diseñadas para acompañar el crecimiento integral de la niñez y la juventud local.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 4. HORARIOS DE SERVICIOS -->
+<section class="py-16 bg-slate-100/70 border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Reuniones Presenciales</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Nuestros Horarios de Culto</h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">Te esperamos en nuestra sede principal para compartir en familia.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Domingos Mañana -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Domingos · Dos Servicios</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Cultos Dominicales</h3>
+                    <p class="text-slate-600 text-sm mb-4">Alabanza, enseñanza bíblica y escuela dominical para niños durante ambos servicios.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 text-indigo-600 font-bold text-xs sm:text-sm space-y-1">
+                    <div><i class="fa-regular fa-clock mr-1.5"></i> 1er Servicio: 8:30 AM - 10:00 AM</div>
+                    <div><i class="fa-regular fa-clock mr-1.5"></i> 2do Servicio: 10:30 AM - 12:00 PM</div>
+                </div>
+            </div>
+
+            <!-- Domingos Tarde (Juvenil Quincenal) -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="bg-amber-50 text-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Domingos · Cada 15 días</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Culto Juvenil</h3>
+                    <p class="text-slate-600 text-sm mb-4">Encuentro dinámico de alabanza, compañerismo y palabra enfocado en adolescentes y jóvenes.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-amber-600 font-bold text-sm">
+                    <span><i class="fa-regular fa-clock mr-1.5"></i> 3:30 PM - 6:00 PM</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- Miércoles Cita Divina -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <span class="bg-emerald-50 text-emerald-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Miércoles</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Cita Divina</h3>
+                    <p class="text-slate-600 text-sm mb-4">Nuestro encuentro semanal de oración, intercesión y estudio de la Palabra.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-emerald-600 font-bold text-sm">
+                    <span><i class="fa-regular fa-clock mr-1.5"></i> 7:00 PM - 8:00 PM</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. BLOQUE: RESUMEN HISTÓRICO E IDENTIDAD -->
+<section class="bg-white py-16 sm:py-20 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="bg-indigo-50 text-indigo-600 border border-indigo-100 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">Nuestra Identidad · +100 Años</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Más de un siglo sirviendo a Dios y a nuestra comunidad</h2>
+            <p class="text-slate-600 mb-4 leading-relaxed text-sm sm:text-base">Nacida a principios del siglo XX a partir de un pequeño grupo de familias creyentes, la <strong>Iglesia Betania</strong> cuenta con más de <strong>100 años de trayectoria ininterrumpida</strong> como un pilar espiritual y social para generaciones de familias.</p>
+            <p class="text-slate-600 mb-6 leading-relaxed text-sm sm:text-base">Creemos en una fe activa que se demuestra con hechos: acompañando al necesitado a través de <strong>Amor en Acción</strong>, promoviendo la salud integral y formando valores en niños y jóvenes.</p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div class="text-2xl font-black text-indigo-600 mb-1">+100 Años</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase">De legado ininterrumpido</div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div class="text-2xl font-black text-indigo-600 mb-1">Amor en Acción</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase">Labor social permanente</div>
+                </div>
+            </div>
+
+            <button onclick="cargarSeccion('quienes_somos')" class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 font-bold text-sm transition group">
+                <span>Leer nuestra reseña histórica completa</span>
+                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition"></i>
+            </button>
+        </div>
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800" alt="Comunidad Betania" class="rounded-3xl shadow-xl w-full object-cover h-[380px]">
+        </div>
+    </div>
+</section>
+
+<!-- 6. BLOQUE: PREGUNTAS FRECUENTES -->
+<section class="py-16 sm:py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+        <span class="bg-indigo-50 text-indigo-600 border border-indigo-100 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">Dudas Frecuentes</span>
+        <h2 class="text-3xl font-extrabold text-slate-900">Información para Visitantes y Comunidad</h2>
+    </div>
+    <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+            <h3 class="font-bold text-lg text-slate-900 mb-1"><i class="fa-solid fa-circle-question text-indigo-600 mr-2"></i> ¿Cómo puedo participar o recibir apoyo en las jornadas de Amor en Acción?</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Todas nuestras jornadas médicas, entrega de alimentos, ropa y cortes de cabello son totalmente gratuitas y abiertas al público. Anunciamos las fechas con anticipación en nuestra sección de Actividades y redes oficiales.</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+            <h3 class="font-bold text-lg text-slate-900 mb-1"><i class="fa-solid fa-people-group text-emerald-600 mr-2"></i> ¿Cuentan con programas regulares para niños y jóvenes?</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Sí, disponemos de escuela bíblica infantil durante los servicios de los domingos, además de encuentros de discipulado y recreativos para jóvenes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 7. BLOQUE: CONTACTO DIRECTO -->
+<section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+    <div class="bg-indigo-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">¿Deseas ponerte en contacto o visitarnos?</h3>
+        <p class="text-indigo-200 text-sm sm:text-base max-w-xl mx-auto mb-4">Estamos disponibles para brindarte información sobre nuestros horarios, consejería pastoral o jornadas médicas y sociales.</p>
+        <p class="text-indigo-300 text-xs sm:text-sm mb-8"><i class="fa-solid fa-location-dot mr-1"></i> Calle Rivas Dávila, Casa Nro. 20, Sector Centro, Palo Negro, Aragua. Zona Postal 2117. &nbsp;·&nbsp; <i class="fa-solid fa-envelope mr-1"></i> iglesiabetania.experiencia@gmail.com</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://wa.me/584141234567" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition inline-flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Contactar por WhatsApp
+            </a>
+            <button onclick="cargarSeccion('contacto')" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl transition">
+                Ver Ubicación y Horarios
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT DE CARRUSEL HERO -->
+<script>
+    (function() {
+        let slideIndex = 0;
+        let intervalId = null;
+
+        function mostrarSlide(index) {
+            const slides = document.querySelectorAll('.carrusel-slide');
+            const indicadores = document.querySelectorAll('.indicador-slide');
+            if (slides.length === 0) return;
+
+            if (index >= slides.length) slideIndex = 0;
+            else if (index < 0) slideIndex = slides.length - 1;
+            else slideIndex = index;
+
+            slides.forEach((s, i) => {
+                if (i === slideIndex) {
+                    s.classList.remove('opacity-0');
+                    s.classList.add('opacity-100');
+                } else {
+                    s.classList.remove('opacity-100');
+                    s.classList.add('opacity-0');
+                }
+            });
+
+            indicadores.forEach((ind, i) => {
+                if (i === slideIndex) {
+                    ind.classList.remove('bg-white/40', 'w-3');
+                    ind.classList.add('bg-white', 'w-6');
+                } else {
+                    ind.classList.remove('bg-white', 'w-6');
+                    ind.classList.add('bg-white/40', 'w-3');
+                }
+            });
+        }
+
+        function siguienteSlide() { mostrarSlide(slideIndex + 1); }
+        function reiniciarIntervalo() {
+            if (intervalId) clearInterval(intervalId);
+            intervalId = setInterval(siguienteSlide, 4000);
+        }
+
+        window.cambiarSlideManual = function(dir) { mostrarSlide(slideIndex + dir); reiniciarIntervalo(); };
+        window.irASlide = function(idx) { mostrarSlide(idx); reiniciarIntervalo(); };
+
+        mostrarSlide(0);
+        reiniciarIntervalo();
+    })();
+</script>
