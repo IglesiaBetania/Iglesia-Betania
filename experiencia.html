@@ -10,7 +10,7 @@
         </p>
     </div>
 
-    <!-- BLOQUE 1: EVENTOS ANUALES -->
+    <!-- BLOQUE 1: EVENTOS ANUALES DINÁMICOS -->
     <div class="mb-20">
         <div class="flex items-center justify-between mb-8 border-b border-slate-200 pb-4">
             <div>
@@ -19,101 +19,12 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- 1. Primicias -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Inicio de Año</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Primicias</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Nuestro primer encuentro especial del año, dedicado a la consagración, gratitud y visión ministerial.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Primicias')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 2. Congreso de Mujeres Libres -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-rose-50 text-rose-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Congreso</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Congreso de Mujeres Libres</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Un tiempo de restauración, enseñanza y fortalecimiento espiritual diseñado especialmente para las mujeres.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Congreso de Mujeres Libres')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 3. Congreso de Hombres -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Congreso</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Congreso de Hombres</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Encuentro de formación, liderazgo familiar y crecimiento cristiano dirigido a los hombres de la comunidad.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Congreso de Hombres')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 4. Conferencias de Jóvenes -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-amber-50 text-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Juventud</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Conferencias de Jóvenes</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Jornadas de inspiración, música y formación de propósito para adolescentes y jóvenes universitarios.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Conferencias de Jóvenes')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 5. 12 Horas de Adoración Continua -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-purple-50 text-purple-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Alabanza y Oración</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">12h de Adoración Continua</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Doce horas ininterrumpidas de alabanza, oración e intercesión congregacional por las familias y la nación.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('12h de Adoración Continua')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 6. Campamentos -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-emerald-50 text-emerald-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Convivencia</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Campamentos</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Retiros fuera de la ciudad con actividades al aire libre, integración, talleres y devocionales.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Campamentos')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 7. Full Day -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-teal-50 text-teal-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Integración</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Full Day Familiar</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Día completo de recreación, deporte y compartir fraternal para todas las edades de nuestra iglesia.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Full Day')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
-            </div>
-
-            <!-- 8. Ebenezer -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Cierre de Año</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Ebenezer</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed mb-4">Nuestro evento de cierre de año para celebrar en comunidad la fidelidad de Dios durante todo el período.</p>
-                </div>
-                <button type="button" onclick="abrirModalInscripcion('Ebenezer')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 font-semibold text-xs transition">
-                    Solicitar Información
-                </button>
+        <!-- Contenedor dinámico donde se cargan las tarjetas desde Google Sheets -->
+        <div id="grid-actividades" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Estado de carga inicial -->
+            <div class="col-span-full py-12 text-center text-slate-500 text-sm">
+                <i class="fa-solid fa-spinner fa-spin text-indigo-600 text-2xl mb-2 block"></i>
+                Cargando calendario de actividades...
             </div>
         </div>
     </div>
@@ -166,3 +77,102 @@
         </div>
     </div>
 </section>
+
+<script>
+    (async function cargarActividadesDinamicas() {
+        const grid = document.getElementById('grid-actividades');
+        if (!grid) return;
+
+        const CACHE_KEY = 'betania_actividades_cache_v1';
+
+        function renderizarActividades(lista) {
+            if (!Array.isArray(lista) || lista.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white rounded-3xl p-8 border border-slate-100 text-center text-slate-500 text-sm">
+                        No hay actividades registradas en este momento.
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = lista.map(item => {
+                const etiquetaTexto = (item.etiqueta || 'Evento').trim();
+                const statusTexto = (item.status || 'No disponible').trim();
+                const esDisponible = statusTexto.toLowerCase() === 'disponible';
+
+                const badgeStatus = esDisponible
+                    ? `<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
+                           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Disponible
+                       </span>`
+                    : `<span class="bg-slate-100 text-slate-500 border border-slate-200 text-[11px] font-semibold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
+                           <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> No disponible
+                       </span>`;
+
+                const nombreSeguro = item.actividad.replace(/'/g, "\\'");
+
+                const botonHtml = esDisponible
+                    ? `<button type="button" onclick="abrirModalInscripcion('${nombreSeguro}')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition shadow-sm">
+                           Solicitar Información
+                       </button>`
+                    : ``;
+
+                return `
+                    <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <span class="bg-indigo-50 text-indigo-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                                    ${etiquetaTexto}
+                                </span>
+                                ${badgeStatus}
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">${item.actividad}</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">${item.descripcion}</p>
+                        </div>
+                        ${botonHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        if (Array.isArray(window._betaniaActividadesCache)) {
+            renderizarActividades(window._betaniaActividadesCache);
+            return;
+        }
+
+        try {
+            const cachedSession = sessionStorage.getItem(CACHE_KEY);
+            if (cachedSession) {
+                const parsed = JSON.parse(cachedSession);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    window._betaniaActividadesCache = parsed;
+                    renderizarActividades(parsed);
+                    return;
+                }
+            }
+        } catch (_) {}
+
+        try {
+            const url = `${API_URL}?action=obtenerActividades`;
+            const response = await fetch(url);
+            const json = await response.json();
+
+            if (!json.success || !Array.isArray(json.data) || json.data.length === 0) {
+                renderizarActividades([]);
+                return;
+            }
+
+            window._betaniaActividadesCache = json.data;
+            try {
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify(json.data));
+            } catch (_) {}
+
+            renderizarActividades(json.data);
+
+        } catch (error) {
+            console.error("Error al obtener actividades:", error);
+            grid.innerHTML = `
+                <div class="col-span-full bg-rose-50 border border-rose-200 rounded-3xl p-6 text-center text-rose-700 text-sm">
+                    No se pudieron cargar las actividades en este momento. Intenta recargar la página.
+                </div>`;
+        }
+    })();
+</script>

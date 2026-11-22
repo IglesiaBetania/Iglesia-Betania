@@ -50,6 +50,7 @@
                 <button type="button" data-nav="ministerios" onclick="cargarSeccion('ministerios')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Ministerios</button>
                 <button type="button" data-nav="quienes_somos" onclick="cargarSeccion('quienes_somos')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Quiénes Somos</button>
                 <button type="button" data-nav="preguntas" onclick="cargarSeccion('preguntas')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Preguntas</button>
+                <button type="button" data-nav="diezmo_ofrenda" onclick="cargarSeccion('diezmo_ofrenda')" class="nav-link px-3 py-2 rounded-lg hover:text-primary hover:bg-slate-50 transition">Diezmos y Ofrendas</button>
                 <button type="button" data-nav="contacto" onclick="cargarSeccion('contacto')" class="ml-2 bg-primary text-white px-4 py-2 rounded-xl font-semibold shadow-md shadow-primary/20 hover:bg-indigo-700 transition">
                     Contacto
                 </button>
@@ -70,6 +71,7 @@
             <button type="button" onclick="cargarSeccion('ministerios'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Ministerios</button>
             <button type="button" onclick="cargarSeccion('quienes_somos'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Quiénes Somos</button>
             <button type="button" onclick="cargarSeccion('preguntas'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Preguntas</button>
+            <button type="button" onclick="cargarSeccion('diezmo_ofrenda'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Diezmos y Ofrendas</button>
             <button type="button" onclick="cargarSeccion('contacto'); toggleMenuMobile();" class="block w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 font-medium text-primary">Contacto</button>
         </div>
     </header>
@@ -110,9 +112,22 @@
 
             <div class="w-full md:w-auto flex flex-col items-center md:items-end gap-2">
                 <p class="text-sm">© 2026 Iglesia Betania. Todos los derechos reservados.</p>
-                <button type="button" onclick="abrirModalAdmin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition">
-                    Admin Check-in
-                </button>
+                <div class="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs">
+                    <button type="button" onclick="abrirModalLegal('privacidad')" class="text-slate-400 hover:text-white underline transition">
+                        Política de Privacidad
+                    </button>
+                    <span>·</span>
+                    <button type="button" onclick="abrirModalLegal('terminos')" class="text-slate-400 hover:text-white underline transition">
+                        Términos de Uso
+                    </button>
+                    <span>·</span>
+                    <button type="button" onclick="abrirGestorCookies()" class="text-slate-400 hover:text-white underline transition">
+                        Gestionar Cookies
+                    </button>
+                    <button type="button" onclick="abrirModalAdmin()" class="ml-1 bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                        Admin Check-in
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
@@ -220,12 +235,105 @@
         </div>
     </div>
 
+    <!-- BANNER DISCRETO DE COOKIES Y ALMACENAMIENTO -->
+    <div id="banner-cookies" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-40 bg-white border border-slate-200 rounded-2xl shadow-2xl p-5 hidden">
+        <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-primary flex items-center justify-center shrink-0 text-lg">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 text-sm">Privacidad y Cookies</h4>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Utilizamos almacenamiento local esencial para mejorar tu experiencia de navegación y proteger el envío de formularios. Consulta nuestra 
+                    <button type="button" onclick="abrirModalLegal('privacidad')" class="text-primary font-semibold underline">Política de Privacidad</button>.
+                </p>
+                <div class="flex flex-wrap items-center gap-2 mt-3.5">
+                    <button type="button" onclick="guardarPreferenciaCookies('todas')" class="bg-primary hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition">
+                        Aceptar
+                    </button>
+                    <button type="button" onclick="guardarPreferenciaCookies('esenciales')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-2 rounded-lg transition">
+                        Solo esenciales
+                    </button>
+                    <button type="button" onclick="abrirGestorCookies()" class="text-xs text-slate-500 hover:text-slate-800 underline px-2 py-1">
+                        Gestionar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE GESTIÓN DE COOKIES -->
+    <div id="modal-cookies" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-3xl p-7 shadow-2xl relative">
+            <button type="button" onclick="cerrarModalCookies()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Preferencias de Cookies</h3>
+            <p class="text-xs text-slate-600 mb-5 leading-relaxed">
+                Puedes elegir qué tipo de almacenamiento permites en tu navegador mientras visitas el portal de la Iglesia Betania.
+            </p>
+
+            <div class="space-y-3 mb-6">
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-3">
+                    <div>
+                        <div class="text-sm font-bold text-slate-900">Técnicas y Esenciales</div>
+                        <div class="text-xs text-slate-500">Necesarias para que el menú, los modales y los formularios funcionen correctamente.</div>
+                    </div>
+                    <span class="text-[11px] font-bold uppercase bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full shrink-0">Siempre activas</span>
+                </div>
+
+                <label class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-3 cursor-pointer">
+                    <div>
+                        <div class="text-sm font-bold text-slate-900">Preferencias de Experiencia</div>
+                        <div class="text-xs text-slate-500">Recuerdan si ya viste el mensaje de bienvenida para no mostrarlo repetidamente.</div>
+                    </div>
+                    <input type="checkbox" id="chk-cookies-preferencias" checked class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary shrink-0">
+                </label>
+            </div>
+
+            <div class="flex gap-2">
+                <button type="button" onclick="guardarPreferenciaCookies('personalizada')" class="flex-1 bg-primary hover:bg-indigo-700 text-white text-sm font-bold py-3 rounded-xl transition">
+                    Guardar Selección
+                </button>
+                <button type="button" onclick="guardarPreferenciaCookies('todas')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold py-3 rounded-xl transition">
+                    Aceptar Todas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LEGAL: PRIVACIDAD Y TÉRMINOS -->
+    <div id="modal-legal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-2xl w-full rounded-3xl p-7 sm:p-8 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <button type="button" onclick="cerrarModalLegal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <span id="legal-badge" class="bg-indigo-50 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block w-fit mb-2">
+                Información Legal
+            </span>
+            <h3 id="legal-titulo" class="text-2xl font-bold text-slate-900 mb-4">Política de Privacidad</h3>
+            
+            <div id="legal-contenido" class="overflow-y-auto pr-2 space-y-4 text-sm text-slate-600 leading-relaxed">
+                <!-- Se rellena dinámicamente -->
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-slate-100">
+                <button type="button" onclick="cerrarModalLegal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-bold text-sm transition">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPT DE GESTIÓN SPA Y ROUTER -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             cargarSeccion('inicio');
             if (!localStorage.getItem('betania_onboarding_seen')) {
                 document.getElementById('modal-onboarding').classList.remove('hidden');
+            }
+            if (!localStorage.getItem('betania_cookies_pref')) {
+                document.getElementById('banner-cookies').classList.remove('hidden');
             }
         });
 
@@ -235,6 +343,8 @@
                 cerrarModalAdmin();
                 cerrarModalAlerta();
                 cerrarOnboarding();
+                cerrarModalCookies();
+                cerrarModalLegal();
             }
         });
 
@@ -278,8 +388,69 @@
         }
 
         function cerrarOnboarding() {
-            localStorage.setItem('betania_onboarding_seen', 'true');
+            if (localStorage.getItem('betania_cookies_pref') !== 'esenciales') {
+                localStorage.setItem('betania_onboarding_seen', 'true');
+            }
             document.getElementById('modal-onboarding').classList.add('hidden');
+        }
+
+        function guardarPreferenciaCookies(tipo) {
+            let pref = tipo;
+            if (tipo === 'personalizada') {
+                const aceptaPref = document.getElementById('chk-cookies-preferencias').checked;
+                pref = aceptaPref ? 'todas' : 'esenciales';
+            }
+            localStorage.setItem('betania_cookies_pref', pref);
+            if (pref === 'esenciales') {
+                localStorage.removeItem('betania_onboarding_seen');
+            }
+            document.getElementById('banner-cookies').classList.add('hidden');
+            cerrarModalCookies();
+        }
+
+        function abrirGestorCookies() {
+            const prefActual = localStorage.getItem('betania_cookies_pref');
+            const chk = document.getElementById('chk-cookies-preferencias');
+            if (chk) chk.checked = (prefActual !== 'esenciales');
+            document.getElementById('modal-cookies').classList.remove('hidden');
+        }
+
+        function cerrarModalCookies() {
+            document.getElementById('modal-cookies').classList.add('hidden');
+        }
+
+        function abrirModalLegal(tipo) {
+            const titulo = document.getElementById('legal-titulo');
+            const contenido = document.getElementById('legal-contenido');
+
+            if (tipo === 'privacidad') {
+                titulo.innerText = 'Política de Privacidad y Protección de Datos';
+                contenido.innerHTML = `
+                    <p><strong>1. Responsable de los Datos:</strong> La <strong>Asociación Civil Iglesia Evangélica Libre Betania</strong> (RIF: J310518394), domiciliada en Calle Rivas Dávila, Casa Nro. 20, Sector Centro, Palo Negro, Estado Aragua, es responsable del resguardo de la información suministrada en este portal.</p>
+                    <p><strong>2. Finalidad de los Datos Recopilados:</strong> Los datos personales solicitados en nuestros formularios (nombre, apellido, cédula, teléfono, correo electrónico y referencias de operación) se utilizan única y exclusivamente para:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Gestionar pre-registros y control de asistencia a actividades, campamentos o jornadas comunitarias.</li>
+                        <li>Validar reportes voluntarios de diezmos u ofrendas y enviar el recibo electrónico correspondiente al correo del aportante.</li>
+                        <li>Responder solicitudes de información o consejería pastoral.</li>
+                    </ul>
+                    <p><strong>3. Confidencialidad:</strong> Nunca vendemos, alquilamos ni cedemos bases de datos personales a terceros con fines comerciales o publicitarios.</p>
+                    <p><strong>4. Derechos del Usuario:</strong> En cualquier momento puedes solicitar la actualización, rectificación o eliminación de tus datos enviando un correo a <strong>iglesiabetania.experiencia@gmail.com</strong>.</p>
+                `;
+            } else {
+                titulo.innerText = 'Términos y Condiciones de Uso';
+                contenido.innerHTML = `
+                    <p><strong>1. Objeto del Sitio Web:</strong> Este portal tiene carácter informativo, pastoral y comunitario para difundir los horarios, ministerios, actividades sociales y canales oficiales de la <strong>Iglesia Betania</strong>.</p>
+                    <p><strong>2. Voluntariedad de los Aportes:</strong> Toda donación, diezmo u ofrenda reportada a través de este sitio es <strong>estrictamente voluntaria, libre y espontánea</strong>. Ningún visitante o miembro está obligado a realizar aportes económicos para participar en nuestros cultos o jornadas sociales gratuitas.</p>
+                    <p><strong>3. Veracidad de la Información:</strong> Al completar un formulario de pre-registro o reporte de operación, el usuario declara que los datos ingresados son reales y corresponden a una operación legítima.</p>
+                    <p><strong>4. Propiedad del Contenido:</strong> Los logotipos, fotografías institucionales y textos publicados pertenecen a la Asociación Civil Iglesia Evangélica Libre Betania.</p>
+                `;
+            }
+
+            document.getElementById('modal-legal').classList.remove('hidden');
+        }
+
+        function cerrarModalLegal() {
+            document.getElementById('modal-legal').classList.add('hidden');
         }
 
         function toggleMenuMobile() {
