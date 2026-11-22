@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Betania</title>
+    <!-- Favicon institucional -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -124,25 +127,22 @@
                     <button type="button" onclick="abrirGestorCookies()" class="text-slate-400 hover:text-white underline transition">
                         Gestionar Cookies
                     </button>
-                    <button type="button" onclick="abrirModalAdmin()" class="ml-1 bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition">
-                        Admin Check-in
-                    </button>
                 </div>
             </div>
         </div>
     </footer>
 
-<!-- MODAL 1: BIENVENIDA -->
-<div id="modal-onboarding" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="bg-white max-w-lg w-full rounded-3xl p-8 shadow-2xl text-center">
-        <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center p-3 mx-auto mb-6 shadow-md">
-            <img src="img/logo_betania.png" alt="Logo Iglesia Betania" class="w-full h-full object-contain">
+    <!-- MODAL 1: BIENVENIDA -->
+    <div id="modal-onboarding" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-lg w-full rounded-3xl p-8 shadow-2xl text-center">
+            <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center p-3 mx-auto mb-6 shadow-md">
+                <img src="img/logo_betania.png" alt="Logo Iglesia Betania" class="w-full h-full object-contain">
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Bienvenido a Iglesia Betania!</h3>
+            <p class="text-slate-600 text-sm mb-6">Un espacio de fe, familia y servicio comunitario. Conoce nuestros horarios de reunión, ministerios y próximas actividades.</p>
+            <button type="button" onclick="cerrarOnboarding()" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition">Explorar Sitio</button>
         </div>
-        <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Bienvenido a Iglesia Betania!</h3>
-        <p class="text-slate-600 text-sm mb-6">Un espacio de fe, familia y servicio comunitario. Conoce nuestros horarios de reunión, ministerios y próximas actividades.</p>
-        <button type="button" onclick="cerrarOnboarding()" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition">Explorar Sitio</button>
     </div>
-</div>
 
     <!-- MODAL 2: PRE-REGISTRO A ACTIVIDADES -->
     <div id="modal-inscripcion" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
@@ -189,30 +189,7 @@
         </div>
     </div>
 
-    <!-- MODAL 3: ADMIN CHECK-IN -->
-    <div id="modal-admin" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl relative">
-            <button type="button" onclick="cerrarModalAdmin()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar modal"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4">Control de Asistencia</h3>
-            <form onsubmit="ejecutarAdminCheckin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Clave de Administrador</label>
-                    <input type="password" id="admin-clave" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Cédula del Asistente</label>
-                    <input type="text" id="admin-cedula" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre de la Actividad</label>
-                    <input type="text" id="admin-eventoid" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm" placeholder="Ej: Encuentro Familiar 2026">
-                </div>
-                <button type="submit" id="btn-enviar-checkin" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition">Registrar Asistencia</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 4: NOTIFICACIÓN / ALERTA INSTITUCIONAL -->
+    <!-- MODAL 3: NOTIFICACIÓN / ALERTA INSTITUCIONAL -->
     <div id="modal-alerta" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
         <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl text-center relative">
             <button type="button" onclick="cerrarModalAlerta()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600" aria-label="Cerrar notificación">
@@ -242,9 +219,9 @@
                 <i class="fa-solid fa-shield-halved"></i>
             </div>
             <div>
-                <h4 class="font-bold text-slate-900 text-sm">Privacidad y Cookies</h4>
+                <h4 class="font-bold text-slate-900 text-sm">Privacidad, Cookies y Analítica</h4>
                 <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Utilizamos almacenamiento local esencial para mejorar tu experiencia de navegación y proteger el envío de formularios. Consulta nuestra 
+                    Utilizamos almacenamiento local esencial y <strong>Google Analytics</strong> (estadísticas anónimas de visitas) para mejorar la experiencia del portal. Consulta nuestra 
                     <button type="button" onclick="abrirModalLegal('privacidad')" class="text-primary font-semibold underline">Política de Privacidad</button>.
                 </p>
                 <div class="flex flex-wrap items-center gap-2 mt-3.5">
@@ -268,9 +245,9 @@
             <button type="button" onclick="cerrarModalCookies()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600" aria-label="Cerrar">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Preferencias de Cookies</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Preferencias de Cookies y Analítica</h3>
             <p class="text-xs text-slate-600 mb-5 leading-relaxed">
-                Puedes elegir qué tipo de almacenamiento permites en tu navegador mientras visitas el portal de la Iglesia Betania.
+                Puedes elegir qué tipo de almacenamiento y medición permites en tu navegador mientras visitas el portal de la Iglesia Betania.
             </p>
 
             <div class="space-y-3 mb-6">
@@ -284,8 +261,8 @@
 
                 <label class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-3 cursor-pointer">
                     <div>
-                        <div class="text-sm font-bold text-slate-900">Preferencias de Experiencia</div>
-                        <div class="text-xs text-slate-500">Recuerdan si ya viste el mensaje de bienvenida para no mostrarlo repetidamente.</div>
+                        <div class="text-sm font-bold text-slate-900">Preferencias y Estadísticas (Google Analytics)</div>
+                        <div class="text-xs text-slate-500">Recuerdan el mensaje de bienvenida y miden de forma anónima las secciones más visitadas para mejorar el portal.</div>
                     </div>
                     <input type="checkbox" id="chk-cookies-preferencias" checked class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary shrink-0">
                 </label>
@@ -325,101 +302,145 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE GESTIÓN SPA Y ROUTER -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            cargarSeccion('inicio');
-            if (!localStorage.getItem('betania_onboarding_seen')) {
-                document.getElementById('modal-onboarding').classList.remove('hidden');
-            }
-            if (!localStorage.getItem('betania_cookies_pref')) {
-                document.getElementById('banner-cookies').classList.remove('hidden');
-            }
+<!-- SCRIPT DE GESTIÓN SPA, ROUTER Y GOOGLE ANALYTICS -->
+<script>
+    const GA_MEASUREMENT_ID = "G-HN90Q8J569";
+
+    function permiteMedicionAnalytics() {
+        return localStorage.getItem('betania_cookies_pref') !== 'esenciales';
+    }
+
+    function initGoogleAnalytics() {
+        if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
+        if (!permiteMedicionAnalytics()) return;
+        if (document.getElementById("ga4-gtag-script")) return;
+
+        const gtagScript = document.createElement("script");
+        gtagScript.id = "ga4-gtag-script";
+        gtagScript.async = true;
+        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+    }
+
+    function registrarVistaSeccionGA(nombreArchivo) {
+        if (!permiteMedicionAnalytics()) return;
+        if (!window.__gaInicializado) {
+            initGoogleAnalytics();
+            window.__gaInicializado = true;
+        }
+        if (typeof window.gtag !== "function") return;
+
+        window.gtag("event", "page_view", {
+            page_title: `Iglesia Betania - ${nombreArchivo}`,
+            page_location: `${window.location.origin}${window.location.pathname}#/${nombreArchivo}`,
+            page_path: `/${nombreArchivo}`
         });
+    }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                cerrarModalInscripcion();
-                cerrarModalAdmin();
-                cerrarModalAlerta();
-                cerrarOnboarding();
-                cerrarModalCookies();
-                cerrarModalLegal();
-            }
-        });
-
-        function marcarNavActiva(nombreArchivo) {
-            document.querySelectorAll('.nav-link').forEach(btn => {
-                if (btn.getAttribute('data-nav') === nombreArchivo) {
-                    btn.classList.add('text-primary', 'bg-indigo-50', 'font-semibold');
-                } else {
-                    btn.classList.remove('text-primary', 'bg-indigo-50', 'font-semibold');
-                }
-            });
+    window.addEventListener('DOMContentLoaded', () => {
+        initGoogleAnalytics();
+        window.__gaInicializado = true;
+        cargarSeccion('inicio');
+        if (!localStorage.getItem('betania_onboarding_seen')) {
+            document.getElementById('modal-onboarding').classList.remove('hidden');
         }
-
-        async function cargarSeccion(nombreArchivo) {
-            const container = document.getElementById('app-container');
-            marcarNavActiva(nombreArchivo);
-            try {
-                const response = await fetch(`${nombreArchivo}.html`);
-                if (!response.ok) throw new Error(`No se encontró ${nombreArchivo}.html`);
-                const htmlText = await response.text();
-
-                container.innerHTML = htmlText;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                });
-            } catch (error) {
-                console.error("Error al cargar la sección:", error);
-                container.innerHTML = `
-                    <div class="max-w-xl mx-auto my-16 p-8 bg-white rounded-3xl border border-slate-200 text-center shadow-sm">
-                        <p class="text-slate-800 font-bold mb-2">Sección no disponible (${nombreArchivo}.html)</p>
-                        <p class="text-sm text-slate-500 mb-4">Verifica que el archivo exista en la misma carpeta del proyecto o vuelve al inicio.</p>
-                        <button type="button" onclick="cargarSeccion('inicio')" class="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition">Ir a Inicio</button>
-                    </div>`;
-            }
+        if (!localStorage.getItem('betania_cookies_pref')) {
+            document.getElementById('banner-cookies').classList.remove('hidden');
         }
+    });
 
-        function cerrarOnboarding() {
-            if (localStorage.getItem('betania_cookies_pref') !== 'esenciales') {
-                localStorage.setItem('betania_onboarding_seen', 'true');
-            }
-            document.getElementById('modal-onboarding').classList.add('hidden');
-        }
-
-        function guardarPreferenciaCookies(tipo) {
-            let pref = tipo;
-            if (tipo === 'personalizada') {
-                const aceptaPref = document.getElementById('chk-cookies-preferencias').checked;
-                pref = aceptaPref ? 'todas' : 'esenciales';
-            }
-            localStorage.setItem('betania_cookies_pref', pref);
-            if (pref === 'esenciales') {
-                localStorage.removeItem('betania_onboarding_seen');
-            }
-            document.getElementById('banner-cookies').classList.add('hidden');
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            cerrarModalInscripcion();
+            cerrarModalAlerta();
+            cerrarOnboarding();
             cerrarModalCookies();
+            cerrarModalLegal();
         }
+    });
 
-        function abrirGestorCookies() {
-            const prefActual = localStorage.getItem('betania_cookies_pref');
-            const chk = document.getElementById('chk-cookies-preferencias');
-            if (chk) chk.checked = (prefActual !== 'esenciales');
-            document.getElementById('modal-cookies').classList.remove('hidden');
+    function marcarNavActiva(nombreArchivo) {
+        document.querySelectorAll('.nav-link').forEach(btn => {
+            if (btn.getAttribute('data-nav') === nombreArchivo) {
+                btn.classList.add('text-primary', 'bg-indigo-50', 'font-semibold');
+            } else {
+                btn.classList.remove('text-primary', 'bg-indigo-50', 'font-semibold');
+            }
+        });
+    }
+
+    async function cargarSeccion(nombreArchivo) {
+        const container = document.getElementById('app-container');
+        marcarNavActiva(nombreArchivo);
+        try {
+            const response = await fetch(`${nombreArchivo}.html`);
+            if (!response.ok) throw new Error(`No se encontró ${nombreArchivo}.html`);
+            const htmlText = await response.text();
+
+            container.innerHTML = htmlText;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+
+            registrarVistaSeccionGA(nombreArchivo);
+        } catch (error) {
+            console.error("Error al cargar la sección:", error);
+            container.innerHTML = `
+                <div class="max-w-xl mx-auto my-16 p-8 bg-white rounded-3xl border border-slate-200 text-center shadow-sm">
+                    <p class="text-slate-800 font-bold mb-2">Sección no disponible (${nombreArchivo}.html)</p>
+                    <p class="text-sm text-slate-500 mb-4">Verifica que el archivo exista en la misma carpeta del proyecto o vuelve al inicio.</p>
+                    <button type="button" onclick="cargarSeccion('inicio')" class="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition">Ir a Inicio</button>
+                </div>`;
         }
+    }
 
-        function cerrarModalCookies() {
-            document.getElementById('modal-cookies').classList.add('hidden');
+    function cerrarOnboarding() {
+        if (localStorage.getItem('betania_cookies_pref') !== 'esenciales') {
+            localStorage.setItem('betania_onboarding_seen', 'true');
         }
+        document.getElementById('modal-onboarding').classList.add('hidden');
+    }
 
-        function abrirModalLegal(tipo) {
+    function guardarPreferenciaCookies(tipo) {
+        let pref = tipo;
+        if (tipo === 'personalizada') {
+            const aceptaPref = document.getElementById('chk-cookies-preferencias').checked;
+            pref = aceptaPref ? 'todas' : 'esenciales';
+        }
+        localStorage.setItem('betania_cookies_pref', pref);
+        if (pref === 'esenciales') {
+            localStorage.removeItem('betania_onboarding_seen');
+        } else {
+            initGoogleAnalytics();
+            window.__gaInicializado = true;
+        }
+        document.getElementById('banner-cookies').classList.add('hidden');
+        cerrarModalCookies();
+    }
+
+    function abrirGestorCookies() {
+        const prefActual = localStorage.getItem('betania_cookies_pref');
+        const chk = document.getElementById('chk-cookies-preferencias');
+        if (chk) chk.checked = (prefActual !== 'esenciales');
+        document.getElementById('modal-cookies').classList.remove('hidden');
+    }
+
+    function cerrarModalCookies() {
+        document.getElementById('modal-cookies').classList.add('hidden');
+    }
+
+    function abrirModalLegal(tipo) {
             const titulo = document.getElementById('legal-titulo');
             const contenido = document.getElementById('legal-contenido');
 
@@ -433,8 +454,9 @@
                         <li>Validar reportes voluntarios de diezmos u ofrendas y enviar el recibo electrónico correspondiente al correo del aportante.</li>
                         <li>Responder solicitudes de información o consejería pastoral.</li>
                     </ul>
-                    <p><strong>3. Confidencialidad:</strong> Nunca vendemos, alquilamos ni cedemos bases de datos personales a terceros con fines comerciales o publicitarios.</p>
-                    <p><strong>4. Derechos del Usuario:</strong> En cualquier momento puedes solicitar la actualización, rectificación o eliminación de tus datos enviando un correo a <strong>iglesiabetania.experiencia@gmail.com</strong>.</p>
+                    <p><strong>3. Cookies y Medición Estadística (Google Analytics):</strong> Este portal utiliza <strong>Google Analytics</strong> para recopilar estadísticas agregadas y anónimas sobre las secciones visitadas, sin enviar nombres, cédulas, teléfonos ni correos electrónicos. Puedes aceptar o desactivar esta medición en cualquier momento desde la opción <em>Gestionar Cookies</em> al pie de la página.</p>
+                    <p><strong>4. Confidencialidad:</strong> Nunca vendemos, alquilamos ni cedemos bases de datos personales a terceros con fines comerciales o publicitarios.</p>
+                    <p><strong>5. Derechos del Usuario:</strong> En cualquier momento puedes solicitar la actualización, rectificación o eliminación de tus datos enviando un correo a <strong>iglesiabetania.experiencia@gmail.com</strong>.</p>
                 `;
             } else {
                 titulo.innerText = 'Términos y Condiciones de Uso';
@@ -449,163 +471,113 @@
             document.getElementById('modal-legal').classList.remove('hidden');
         }
 
-        function cerrarModalLegal() {
-            document.getElementById('modal-legal').classList.add('hidden');
+    function cerrarModalLegal() {
+        document.getElementById('modal-legal').classList.add('hidden');
+    }
+
+    function toggleMenuMobile() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    function abrirModalInscripcion(titulo) {
+        document.getElementById('modal-ins-titulo').innerText = `Pre-registro: ${titulo}`;
+        document.getElementById('ins-evento-id').value = titulo;
+        document.getElementById('modal-inscripcion').classList.remove('hidden');
+    }
+
+    function cerrarModalInscripcion() {
+        document.getElementById('modal-inscripcion').classList.add('hidden');
+    }
+
+    function mostrarAlerta(mensaje, esExito = true, codigo = "") {
+        const modal = document.getElementById('modal-alerta');
+        const iconoWrap = document.getElementById('alerta-icono-wrap');
+        const icono = document.getElementById('alerta-icono');
+        const etiqueta = document.getElementById('alerta-etiqueta');
+        const titulo = document.getElementById('alerta-titulo');
+        const texto = document.getElementById('alerta-mensaje');
+        const codigoWrap = document.getElementById('alerta-codigo-wrap');
+        const codigoEl = document.getElementById('alerta-codigo');
+        const btn = document.getElementById('alerta-btn');
+
+        if (esExito) {
+            iconoWrap.className = "w-16 h-16 bg-emerald-50 text-emeraldState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
+            icono.className = "fa-solid fa-circle-check";
+            etiqueta.className = "bg-emerald-50 text-emeraldState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
+            etiqueta.innerText = "Registro Exitoso";
+            titulo.innerText = "¡Operación Completada!";
+            btn.className = "w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition";
+        } else {
+            iconoWrap.className = "w-16 h-16 bg-red-50 text-redState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
+            icono.className = "fa-solid fa-circle-exclamation";
+            etiqueta.className = "bg-red-50 text-redState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
+            etiqueta.innerText = "Aviso";
+            titulo.innerText = "No se pudo completar";
+            btn.className = "w-full bg-slate-900 text-white py-3.5 rounded-xl font-bold hover:bg-slate-800 transition";
         }
 
-        function toggleMenuMobile() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        texto.innerText = mensaje;
+
+        if (codigo) {
+            codigoEl.innerText = codigo;
+            codigoWrap.classList.remove('hidden');
+        } else {
+            codigoWrap.classList.add('hidden');
         }
 
-        function abrirModalInscripcion(titulo) {
-            document.getElementById('modal-ins-titulo').innerText = `Pre-registro: ${titulo}`;
-            document.getElementById('ins-evento-id').value = titulo;
-            document.getElementById('modal-inscripcion').classList.remove('hidden');
-        }
+        modal.classList.remove('hidden');
+    }
 
-        function cerrarModalInscripcion() {
-            document.getElementById('modal-inscripcion').classList.add('hidden');
-        }
+    function cerrarModalAlerta() {
+        document.getElementById('modal-alerta').classList.add('hidden');
+    }
 
-        function abrirModalAdmin() {
-            document.getElementById('modal-admin').classList.remove('hidden');
-        }
+    async function enviarInscripcion(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn-enviar-inscripcion');
+        const textoOriginal = btn.innerText;
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
 
-        function cerrarModalAdmin() {
-            document.getElementById('modal-admin').classList.add('hidden');
-        }
+        const eventoValor = document.getElementById('ins-evento-id').value.trim();
+        const nombreValor = document.getElementById('ins-nombre').value.trim();
+        const cedulaValor = document.getElementById('ins-cedula').value.trim();
+        const telefonoValor = document.getElementById('ins-telefono').value.trim();
+        const correoValor = document.getElementById('ins-correo').value.trim();
 
-        function mostrarAlerta(mensaje, esExito = true, codigo = "") {
-            const modal = document.getElementById('modal-alerta');
-            const iconoWrap = document.getElementById('alerta-icono-wrap');
-            const icono = document.getElementById('alerta-icono');
-            const etiqueta = document.getElementById('alerta-etiqueta');
-            const titulo = document.getElementById('alerta-titulo');
-            const texto = document.getElementById('alerta-mensaje');
-            const codigoWrap = document.getElementById('alerta-codigo-wrap');
-            const codigoEl = document.getElementById('alerta-codigo');
-            const btn = document.getElementById('alerta-btn');
+        const payload = {
+            action: "registrarInscripcion",
+            evento: eventoValor,
+            eventoId: eventoValor,
+            nombre_apellido: nombreValor,
+            nombre: nombreValor,
+            cedula: cedulaValor,
+            telefono: telefonoValor,
+            correo: correoValor
+        };
 
-            if (esExito) {
-                iconoWrap.className = "w-16 h-16 bg-emerald-50 text-emeraldState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
-                icono.className = "fa-solid fa-circle-check";
-                etiqueta.className = "bg-emerald-50 text-emeraldState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
-                etiqueta.innerText = "Registro Exitoso";
-                titulo.innerText = "¡Operación Completada!";
-                btn.className = "w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition";
+        try {
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+            const json = await res.json();
+            if (json.success) {
+                cerrarModalInscripcion();
+                document.getElementById('form-inscripcion').reset();
+                mostrarAlerta(json.message, true, json.id_evento || "");
             } else {
-                iconoWrap.className = "w-16 h-16 bg-red-50 text-redState rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5";
-                icono.className = "fa-solid fa-circle-exclamation";
-                etiqueta.className = "bg-red-50 text-redState px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-2";
-                etiqueta.innerText = "Aviso";
-                titulo.innerText = "No se pudo completar";
-                btn.className = "w-full bg-slate-900 text-white py-3.5 rounded-xl font-bold hover:bg-slate-800 transition";
+                mostrarAlerta(json.message || "No se pudo guardar el pre-registro.", false);
             }
-
-            texto.innerText = mensaje;
-
-            if (codigo) {
-                codigoEl.innerText = codigo;
-                codigoWrap.classList.remove('hidden');
-            } else {
-                codigoWrap.classList.add('hidden');
-            }
-
-            modal.classList.remove('hidden');
+        } catch (err) {
+            console.error("Error al enviar pre-registro:", err);
+            mostrarAlerta("Error de conexión al enviar el pre-registro.", false);
+        } finally {
+            btn.disabled = false;
+            btn.innerText = textoOriginal;
         }
-
-        function cerrarModalAlerta() {
-            document.getElementById('modal-alerta').classList.add('hidden');
-        }
-
-        async function enviarInscripcion(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btn-enviar-inscripcion');
-            const textoOriginal = btn.innerText;
-            btn.disabled = true;
-            btn.innerText = "Enviando...";
-
-            const eventoValor = document.getElementById('ins-evento-id').value.trim();
-            const nombreValor = document.getElementById('ins-nombre').value.trim();
-            const cedulaValor = document.getElementById('ins-cedula').value.trim();
-            const telefonoValor = document.getElementById('ins-telefono').value.trim();
-            const correoValor = document.getElementById('ins-correo').value.trim();
-
-            const payload = {
-                action: "registrarInscripcion",
-                evento: eventoValor,
-                eventoId: eventoValor,
-                nombre_apellido: nombreValor,
-                nombre: nombreValor,
-                cedula: cedulaValor,
-                telefono: telefonoValor,
-                correo: correoValor
-            };
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(payload)
-                });
-                const json = await res.json();
-                if (json.success) {
-                    cerrarModalInscripcion();
-                    document.getElementById('form-inscripcion').reset();
-                    mostrarAlerta(json.message, true, json.id_evento || "");
-                } else {
-                    mostrarAlerta(json.message || "No se pudo guardar el pre-registro.", false);
-                }
-            } catch (err) {
-                console.error("Error al enviar pre-registro:", err);
-                mostrarAlerta("Error de conexión al enviar el pre-registro.", false);
-            } finally {
-                btn.disabled = false;
-                btn.innerText = textoOriginal;
-            }
-        }
-
-        async function ejecutarAdminCheckin(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btn-enviar-checkin');
-            const textoOriginal = btn ? btn.innerText : "Registrar Asistencia";
-            if (btn) {
-                btn.disabled = true;
-                btn.innerText = "Registrando...";
-            }
-
-            const payload = {
-                action: "adminCheckin",
-                clave: document.getElementById('admin-clave').value,
-                cedula: document.getElementById('admin-cedula').value.trim(),
-                eventoId: document.getElementById('admin-eventoid').value.trim(),
-                evento: document.getElementById('admin-eventoid').value.trim()
-            };
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(payload)
-                });
-                const json = await res.json();
-                if (json.success) {
-                    cerrarModalAdmin();
-                    e.target.reset();
-                    mostrarAlerta(json.message, true);
-                } else {
-                    mostrarAlerta(json.message || "No se pudo registrar la asistencia.", false);
-                }
-            } catch (err) {
-                console.error("Error en check-in:", err);
-                mostrarAlerta("Error en el registro de asistencia.", false);
-            } finally {
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerText = textoOriginal;
-                }
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
